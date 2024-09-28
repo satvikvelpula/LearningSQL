@@ -184,6 +184,40 @@ SELECT goal.name FROM goal WHERE goal.id NOT IN (SELECT goal.id FROM goal JOIN g
 
 ![Part4Task5.png](Tasks/Part4Task5.png)
 
+## Koostetieto kyselyt harjoitukset:
+
+### Tehtävä 1:
+
+SELECT MAX(elevation_ft) AS "max(elevation_ft)" FROM airport;
+
+![Part5Task1.png](Tasks/Part5Task1.png)
+
+### Tehtävä 2:
+
+SELECT continent, COUNT(*) AS "count" FROM country GROUP BY continent;
+
+![Part5Task2.png](Tasks/Part5Task2.png)
+
+### Tehtävä 3:
+
+SELECT game.screen_name, COUNT(goal_reached.goal_id) AS "count(*)" FROM game JOIN goal_reached ON game.id = goal_reached.game_id JOIN goal ON goal_reached.goal_id = goal.id WHERE goal.name LIKE 'CLOUDS%' OR goal.name LIKE 'CLEAR%' OR goal.name LIKE 'WINDY%' OR goal.name LIKE 'HOT%' OR goal.name LIKE 'COLD%' OR goal.name LIKE '0DEG%' OR goal.name LIKE '10DEG%' OR goal.name LIKE '20DEG%' GROUP BY game.screen_name;
+
+![Part5Task3.png](Tasks/Part5Task3.png)
+
+### Tehtävä 4:
+
+SELECT screen_name FROM game WHERE co2_consumed = (SELECT MIN(co2_consumed) FROM game);
+
+![Part5Task4.png](Tasks/Part5Task4.png)
+
+### Tehtävä 5:
+
+SELECT country.name, COUNT(airport.id) AS "count(*)" FROM country JOIN airport ON country.iso_country = airport.iso_country GROUP BY country.name ORDER BY COUNT(airport.id) DESC LIMIT 50;
+
+![Part5Task5.png](Tasks/Part5Task5.png)
+
+
+
 
 
 
